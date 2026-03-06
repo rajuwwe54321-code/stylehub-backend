@@ -8,7 +8,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173", "https://clothstorebhiwadi.netlify.app/"],
   }),
 );
 
@@ -16,7 +16,7 @@ app.use(express.json());
 
 mongoose
   .connect(
-    "mongodb+srv://rajuwwe54321:<db_password>@cluster0.uhtw7pm.mongodb.net/?appName=Cluster0",
+    "mongodb+srv://rajuwwe54321:Romanreings@1@cluster0.uhtw7pm.mongodb.net/?appName=Cluster0",
   )
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
@@ -107,6 +107,9 @@ app.delete("/products/:id", async (req, res) => {
   res.json({ message: "Product deleted" });
 });
 
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
+/* SERVER START */
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log("Server running on port " + PORT);
 });
